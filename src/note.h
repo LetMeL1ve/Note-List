@@ -14,4 +14,5 @@ public:
     unsigned int get_id() { return id; }
 
     std::string to_string();
+    static Note to_note(std::string string);
 };  
