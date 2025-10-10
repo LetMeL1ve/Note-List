@@ -2,18 +2,25 @@
 #include "note.h"
 #include <filesystem>
 #include <fstream>
+#include <vector>
 
-
+#pragma region Declaration of methods
 void add_note(Note* note, std::string* path);
 
 void delete_note(unsigned int id, std::string* path);
 
+Note get_note(unsigned int line_number, std::string* path);
+
+void get_all_notes(std::vector<Note>* notes, std::string* path);
+
+#pragma endregion
+
 int main(){
     // Path variable saves path to the notes.txt file.
     std::string path = std::filesystem::current_path().string() + "\\notes.txt";
-    delete_note(1, &path);
 }
 
+#pragma region Realization of methods
 // This function saves note to the file.
 void add_note(Note* note, std::string* path) {
     std::ofstream fout;
@@ -43,3 +50,31 @@ void delete_note(unsigned int id, std::string* path) {
     fout << buffer.rdbuf();
     fout.close();
 }
+
+// This fucntion returns one note that is saved on line [line_number].
+Note get_note(unsigned int line_number, std::string* path) {
+    std::ifstream fin;
+    fin.open(*path);
+
+    std::string line;
+    for (int i = 0; i <= line_number; ++i) {
+        std::getline(fin, line);
+    }
+
+    fin.close();
+    return Note::to_note(line);
+}
+
+// This fucntion saves to the vector [notes] all of notes.
+void get_all_notes(std::vector<Note>* notes, std::string* path) {
+    std::ifstream fin;
+    fin.open(*path);
+
+    std::string line;
+    while (std::getline(fin, line)) {
+        notes->push_back(Note::to_note(line));
+    }
+
+    fin.close();
+}
+#pragma endregion
