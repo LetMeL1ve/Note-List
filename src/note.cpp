@@ -17,3 +17,6 @@ Note::Note(int _id, std::string _text) : id(_id) {
        _text = "<< Empty Note >>";
     text = _text;
 }
+bool Note::operator<(Note& note) {
+    return this->get_id() < note.get_id();
+}

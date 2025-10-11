@@ -2,7 +2,7 @@
 
 class Note {
 private:
-    const unsigned int id;
+    unsigned int id;
     std::string text;
 
 public:
@@ -15,4 +15,6 @@ public:
 
     std::string to_string();
     static Note to_note(std::string string);
+
+    bool operator<(Note& note);
 };  
