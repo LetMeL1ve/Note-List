@@ -1,4 +1,4 @@
-#include "note.h"
+#include "../note/note.h"
 #include <fstream>
 #include <vector>
 #include <sstream>

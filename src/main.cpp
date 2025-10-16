@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-#include "notes_manager.h"
+#include "notes_manager/notes_manager.h"
 #include <filesystem>
 
 int get_number(std::string* message);
