@@ -2,13 +2,13 @@
 #include <iostream>
 
 std::string Note::to_string() {
-    return text + "##" + std::to_string(id);
+    return text + ";" + std::to_string(id);
 }
 
 Note Note::to_note(std::string string) {
-    unsigned int separator_index = string.find_first_of('#');
+    unsigned int separator_index = string.find_first_of(';');
     std::string text = string.substr(0, separator_index);
-    unsigned int id = stoi(string.substr(separator_index + 2));
+    unsigned int id = stoi(string.substr(separator_index + 1));
     return Note(id, text);
 }
 

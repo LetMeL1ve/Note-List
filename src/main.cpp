@@ -62,7 +62,7 @@ int get_number(std::string* message) {
 }
 
 void setup(std::string* path, std::vector<Note>* notes) {
-    *path = std::filesystem::current_path().string() + "\\notes.txt";
+    *path = std::filesystem::current_path().string() + "\\notes.csv";
     notes_manager::get_all_notes(notes, path);
 }
 
